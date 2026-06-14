@@ -1,0 +1,2 @@
+export const metadata = { title: 'Terms of Service' };
+export default function T(){return(<section className="pt-32 pb-24 px-6 bg-cream"><div className="max-w-[700px] mx-auto prose prose-neutral prose-headings:font-serif prose-headings:text-navy"><h1>Terms of Service</h1><p>Last updated: July 2026. Content is informational, not formal advice. All IP is owned by Raphael Ameh. Engagements governed by separate agreements. Laws of England and Wales apply. Contact: hello@raphaelameh.com.</p></div></section>);}

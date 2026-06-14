@@ -1,0 +1,2 @@
+export const metadata = { title: 'Privacy Policy' };
+export default function P(){return(<section className="pt-32 pb-24 px-6 bg-cream"><div className="max-w-[700px] mx-auto prose prose-neutral prose-headings:font-serif prose-headings:text-navy"><h1>Privacy Policy</h1><p>Last updated: July 2026. This policy explains how Raphael Ameh collects and uses your data on raphaelameh.com. Anonymised analytics (with consent), booking details, and emails for downloads. You can access, correct, or delete your data: hello@raphaelameh.com.</p></div></section>);}
