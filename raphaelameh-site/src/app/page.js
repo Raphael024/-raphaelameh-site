@@ -78,10 +78,7 @@ function Hero() {
               <div className="absolute -top-1.5 -right-1.5 -bottom-1.5 -left-1.5 rounded-[18px] border border-border opacity-45" />
               <div className="w-full aspect-[3/4] rounded-[14px] bg-gradient-to-br from-navy-mid to-navy overflow-hidden relative shadow-[0_36px_72px_rgba(15,27,45,0.12)]">
                 {/* Replace with: <Image src="/images/hero.jpg" alt="Raphael Ameh" fill className="object-cover" priority /> */}
-                <div className="w-full h-full flex items-center justify-center text-white/10 text-sm flex-col gap-2">
-                  <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                  <span>Add hero.jpg to /public/images/</span>
-                </div>
+                <Image src="/images/hero.jpg" alt="Raphael Ameh — Data and AI Consultant" fill className="object-cover object-top" priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent" />
               </div>
               <div className="absolute -bottom-4 -left-4 w-[72px] h-[72px] rounded-xl bg-gold opacity-[0.07]" />
@@ -358,9 +355,7 @@ function AboutPreview() {
             <div className="relative">
               <div className="aspect-[4/5] rounded-[14px] bg-gradient-to-br from-navy-mid to-navy overflow-hidden shadow-[0_28px_56px_rgba(15,27,45,0.11)]">
                 {/* Replace with: <Image src="/images/about.jpg" alt="Raphael Ameh" fill className="object-cover" /> */}
-                <div className="w-full h-full flex items-center justify-center text-white/10 text-sm flex-col gap-2">
-                  <span>Add about.jpg to /public/images/</span>
-                </div>
+                <Image src="/images/about.jpg" alt="Raphael Ameh" fill className="object-cover object-top" />
               </div>
               <div className="absolute -bottom-2.5 -right-2.5 w-20 h-20 rounded-xl border-2 border-gold/10" />
             </div>
