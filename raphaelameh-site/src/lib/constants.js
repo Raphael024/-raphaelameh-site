@@ -4,7 +4,7 @@ export const SITE = {
   tagline: 'Data · Analytics · AI Consultant',
   url: 'https://raphaelameh.com',
   email: 'hello@raphaelameh.com',
-  linkedin: 'https://linkedin.com/in/raphaelameh',
+  linkedin: 'https://www.linkedin.com/in/raphael-ameh-b4160b191/',
   description: 'I help organisations build trusted data foundations, analytics systems, machine learning models and AI applications — from strategy through to production.',
 };
 
