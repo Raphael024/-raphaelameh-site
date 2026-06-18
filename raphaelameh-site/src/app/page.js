@@ -380,11 +380,7 @@ function AboutPreview() {
                 Available for speaking engagements — conference talks, panels, podcasts, and workshops.{' '}
                 <Link href="/contact" className="text-gold font-semibold no-underline">Get in touch →</Link>
               </p>
-              <div className="flex gap-1.5 flex-wrap mt-5">
-                {['Python', 'SQL', 'AWS', 'Azure', 'Redshift', 'Fabric', 'Power BI', 'Tableau', 'XGBoost', 'LLMs', 'GA4', 'R'].map((t) => (
-                  <span key={t} className="text-[11.5px] font-medium text-navy-light bg-navy/[0.04] px-2.5 py-1 rounded border border-border-light">{t}</span>
-                ))}
-              </div>
+  
             </div>
           </Reveal>
         </div>
