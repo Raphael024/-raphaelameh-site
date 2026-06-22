@@ -53,7 +53,7 @@ export default function Nav() {
             href={SITE.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackEvent('linkedin_click', { location: 'nav' })}
+            onClick={() => trackEvent('outbound_click_linkedin', { location: 'nav' })}
             className="text-muted hover:text-navy transition-colors"
           >
             <IconLinkedIn className="w-[17px] h-[17px]" />

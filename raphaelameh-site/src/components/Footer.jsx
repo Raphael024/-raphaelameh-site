@@ -34,7 +34,7 @@ export default function Footer() {
             href={SITE.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackEvent('linkedin_click', { location: 'footer' })}
+            onClick={() => trackEvent('outbound_click_linkedin', { location: 'footer' })}
             className="text-white/30 hover:text-white/60 transition-colors"
           >
             <IconLinkedIn className="w-4 h-4" />

@@ -58,7 +58,7 @@ function Hero() {
                 <Link href="/contact" onClick={() => trackEvent('cta_click_book_call', { location: 'hero' })} className="inline-flex items-center gap-2 text-[14.5px] font-semibold text-white bg-navy px-6 py-3 rounded-lg no-underline shadow-[0_4px_14px_rgba(15,27,45,0.14)] hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(15,27,45,0.18)] transition-all">
                   Book a Free 30-Minute Strategy Call <IconArrowRight className="w-3.5 h-3.5" />
                 </Link>
-                <Link href="/checklist" className="inline-flex items-center text-[14.5px] font-semibold text-navy px-6 py-3 rounded-lg border-[1.5px] border-border no-underline hover:border-navy transition-colors">
+                <Link href="/checklist" onClick={() => trackEvent('cta_click_checklist', { location: 'hero' })} className="inline-flex items-center text-[14.5px] font-semibold text-navy px-6 py-3 rounded-lg border-[1.5px] border-border no-underline hover:border-navy transition-colors">
                   Free: AI Readiness Checklist
                 </Link>
               </div>
@@ -440,7 +440,7 @@ function CTASection() {
             <Link href="/contact" onClick={() => trackEvent('cta_click_book_call', { location: 'cta_section' })} className="inline-flex items-center gap-2 text-[15px] font-semibold text-navy bg-white px-7 py-3.5 rounded-lg no-underline shadow-[0_4px_14px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(0,0,0,0.16)] transition-all">
               Book a Free 30-Minute Strategy Call <IconArrowRight className="w-3.5 h-3.5" />
             </Link>
-            <a href={`mailto:${SITE.email}`} onClick={() => trackEvent('email_click', { location: 'cta_section' })} className="inline-flex items-center text-[14.5px] font-medium text-white/70 px-7 py-3.5 rounded-lg border-[1.5px] border-white/15 no-underline hover:border-white/40 transition-colors">
+            <a href={`mailto:${SITE.email}`} onClick={() => trackEvent('cta_click_email', { location: 'cta_section' })} className="inline-flex items-center text-[14.5px] font-medium text-white/70 px-7 py-3.5 rounded-lg border-[1.5px] border-white/15 no-underline hover:border-white/40 transition-colors">
               {SITE.email}
             </a>
           </div>
@@ -477,6 +477,22 @@ function BackToTop() {
    PAGE
    ══════════════════════════════════════════ */
 export default function HomePage() {
+  useEffect(() => {
+    let fired = false;
+    const onScroll = () => {
+      if (fired) return;
+      const doc = document.documentElement;
+      const scrolled = (window.scrollY + window.innerHeight) / doc.scrollHeight;
+      if (scrolled >= 0.9) {
+        fired = true;
+        trackEvent('scroll_depth_90', { page: 'home' });
+        window.removeEventListener('scroll', onScroll);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <>
       <Hero />
