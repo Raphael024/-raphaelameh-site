@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import '@/styles/globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
@@ -42,14 +43,35 @@ export default function RootLayout({ children }) {
               jobTitle: 'Data & AI Consultant',
               description: SITE.description,
               knowsAbout: [
-                'Data Engineering', 'Machine Learning', 'AI Applications',
-                'Marketing Analytics', 'Business Intelligence', 'Data Strategy',
+                'Data Engineering',
+                'Machine Learning',
+                'AI Applications',
+                'Marketing Analytics',
+                'Business Intelligence',
+                'Data Strategy',
               ],
               sameAs: [SITE.linkedin],
             }),
           }}
         />
+
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-YRPHYS6N05"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-YRPHYS6N05');
+          `}
+        </Script>
       </head>
+
       <body className="font-sans bg-cream">
         <Nav />
         <main>{children}</main>
