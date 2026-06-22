@@ -51,6 +51,21 @@ export default function RootLayout({ children }) {
                 'Data Strategy',
               ],
               sameAs: [SITE.linkedin],
+              image: `${SITE.url}/images/logo.png`,
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: SITE.name,
+              url: SITE.url,
+              logo: `${SITE.url}/images/logo.png`,
+              sameAs: [SITE.linkedin],
             }),
           }}
         />
