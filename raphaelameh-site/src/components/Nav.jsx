@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { IconLinkedIn } from './Icons';
 import { SITE } from '@/lib/constants';
 import { trackEvent } from '@/lib/analytics';
@@ -33,9 +34,19 @@ export default function Nav() {
       <div className="max-w-[1120px] mx-auto px-6 flex justify-between items-center h-[66px]">
         <Link
           href="/"
-          className="font-serif text-[17.5px] font-bold text-navy no-underline"
+          className="flex items-center gap-2 no-underline"
         >
-          {SITE.name}<span className="text-gold">.</span>
+          <Image
+            src="/images/monogram-icon.png"
+            alt=""
+            width={30}
+            height={30}
+            className="w-[30px] h-[30px]"
+            priority
+          />
+          <span className="font-serif text-[17.5px] font-bold text-navy">
+            {SITE.name}<span className="text-gold">.</span>
+          </span>
         </Link>
 
         {/* Desktop nav */}

@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { IconLinkedIn } from './Icons';
 import { SITE } from '@/lib/constants';
 import { trackEvent } from '@/lib/analytics';
@@ -16,8 +17,17 @@ export default function Footer() {
   return (
     <footer className="bg-[#0A1420] border-t border-white/[0.04] py-8 px-6">
       <div className="max-w-[1120px] mx-auto flex flex-col md:flex-row justify-between items-center gap-5">
-        <span className="font-serif text-[14.5px] font-bold text-white/35">
-          {SITE.name}<span className="text-gold">.</span>
+        <span className="flex items-center gap-2">
+          <Image
+            src="/images/monogram-icon-light.png"
+            alt=""
+            width={24}
+            height={24}
+            className="w-6 h-6 opacity-70"
+          />
+          <span className="font-serif text-[14.5px] font-bold text-white/35">
+            {SITE.name}<span className="text-gold">.</span>
+          </span>
         </span>
 
         <div className="flex items-center gap-5 flex-wrap justify-center">
