@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { IconLinkedIn } from './Icons';
 import { SITE } from '@/lib/constants';
-import { trackEvent } from '@/lib/analytics';
+import { trackOutboundClick } from '@/lib/dataLayer';
 
 const footerLinks = [
   { label: 'Services', href: '/#services' },
@@ -44,7 +44,7 @@ export default function Footer() {
             href={SITE.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackEvent('outbound_click_linkedin', { location: 'footer' })}
+            onClick={() => trackOutboundClick(SITE.linkedin, 'LinkedIn')}
             className="text-white/30 hover:text-white/60 transition-colors"
           >
             <IconLinkedIn className="w-4 h-4" />

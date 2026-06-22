@@ -1,26 +1,33 @@
 'use client';
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { trackEvent } from '@/lib/analytics';
+import * as dataLayer from '@/lib/dataLayer';
 
 /* Thin client wrappers so server components (pages that export `metadata`)
-   can still fire GA events on click — or, for PageView, on mount. */
+   can fire dataLayer events. The `track` prop is serializable —
+   { fn: 'trackCTAClick', args: ['book_call', 'services'] } — because
+   functions can't be passed from a server component to a client one. */
 
-export function PageView({ event, params }) {
+function fire(track) {
+  if (!track || typeof dataLayer[track.fn] !== 'function') return;
+  dataLayer[track.fn](...(track.args || []));
+}
+
+export function TrackOnMount({ track }) {
   useEffect(() => {
-    trackEvent(event, params);
+    fire(track);
     // fire once on mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return null;
 }
 
-export function TrackedLink({ event, params, onClick, children, ...props }) {
+export function TrackedLink({ track, onClick, children, ...props }) {
   return (
     <Link
       {...props}
       onClick={(e) => {
-        trackEvent(event, params);
+        fire(track);
         onClick?.(e);
       }}
     >
@@ -29,12 +36,12 @@ export function TrackedLink({ event, params, onClick, children, ...props }) {
   );
 }
 
-export function TrackedAnchor({ event, params, onClick, children, ...props }) {
+export function TrackedAnchor({ track, onClick, children, ...props }) {
   return (
     <a
       {...props}
       onClick={(e) => {
-        trackEvent(event, params);
+        fire(track);
         onClick?.(e);
       }}
     >
@@ -43,12 +50,12 @@ export function TrackedAnchor({ event, params, onClick, children, ...props }) {
   );
 }
 
-export function TrackedButton({ event, params, onClick, children, ...props }) {
+export function TrackedButton({ track, onClick, children, ...props }) {
   return (
     <button
       {...props}
       onClick={(e) => {
-        trackEvent(event, params);
+        fire(track);
         onClick?.(e);
       }}
     >
