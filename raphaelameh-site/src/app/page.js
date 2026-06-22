@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import { IconArrowRight, IconArrowUp, SERVICE_ICONS } from '@/components/Icons';
 import { SITE, SERVICES, CASE_STUDIES, INSIGHTS } from '@/lib/constants';
+import { trackEvent } from '@/lib/analytics';
 
 /* ── Eyebrow ── */
 function Eyebrow({ children }) {
@@ -54,7 +55,7 @@ function Hero() {
             </Reveal>
             <Reveal delay={0.22}>
               <div className="flex gap-3 flex-wrap mb-3">
-                <Link href="/contact" className="inline-flex items-center gap-2 text-[14.5px] font-semibold text-white bg-navy px-6 py-3 rounded-lg no-underline shadow-[0_4px_14px_rgba(15,27,45,0.14)] hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(15,27,45,0.18)] transition-all">
+                <Link href="/contact" onClick={() => trackEvent('cta_click_book_call', { location: 'hero' })} className="inline-flex items-center gap-2 text-[14.5px] font-semibold text-white bg-navy px-6 py-3 rounded-lg no-underline shadow-[0_4px_14px_rgba(15,27,45,0.14)] hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(15,27,45,0.18)] transition-all">
                   Book a Free 30-Minute Strategy Call <IconArrowRight className="w-3.5 h-3.5" />
                 </Link>
                 <Link href="/checklist" className="inline-flex items-center text-[14.5px] font-semibold text-navy px-6 py-3 rounded-lg border-[1.5px] border-border no-underline hover:border-navy transition-colors">
@@ -205,7 +206,7 @@ function EngagementModels() {
         </div>
         <Reveal delay={0.3}>
           <p className="text-center mt-8">
-            <Link href="/contact" className="text-sm font-semibold text-gold no-underline hover:text-navy transition-colors inline-flex items-center gap-2">
+            <Link href="/contact" onClick={() => trackEvent('cta_click_book_call', { location: 'engagement_models' })} className="text-sm font-semibold text-gold no-underline hover:text-navy transition-colors inline-flex items-center gap-2">
               Not sure which fits? Book a free 30-minute strategy call and I will tell you <IconArrowRight className="w-3.5 h-3.5" />
             </Link>
           </p>
@@ -378,7 +379,7 @@ function AboutPreview() {
               </div>
               <p className="text-sm text-muted mt-5 italic">
                 Available for speaking engagements — conference talks, panels, podcasts, and workshops.{' '}
-                <Link href="/contact" className="text-gold font-semibold no-underline">Get in touch →</Link>
+                <Link href="/contact" onClick={() => trackEvent('cta_click_book_call', { location: 'about' })} className="text-gold font-semibold no-underline">Get in touch →</Link>
               </p>
   
             </div>
@@ -436,10 +437,10 @@ function CTASection() {
           </p>
           <p className="text-[15.5px] leading-[1.7] text-white/50 mb-9">No pitch. No obligation. No slide decks.</p>
           <div className="flex gap-3.5 justify-center flex-wrap">
-            <Link href="/contact" className="inline-flex items-center gap-2 text-[15px] font-semibold text-navy bg-white px-7 py-3.5 rounded-lg no-underline shadow-[0_4px_14px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(0,0,0,0.16)] transition-all">
+            <Link href="/contact" onClick={() => trackEvent('cta_click_book_call', { location: 'cta_section' })} className="inline-flex items-center gap-2 text-[15px] font-semibold text-navy bg-white px-7 py-3.5 rounded-lg no-underline shadow-[0_4px_14px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(0,0,0,0.16)] transition-all">
               Book a Free 30-Minute Strategy Call <IconArrowRight className="w-3.5 h-3.5" />
             </Link>
-            <a href={`mailto:${SITE.email}`} className="inline-flex items-center text-[14.5px] font-medium text-white/70 px-7 py-3.5 rounded-lg border-[1.5px] border-white/15 no-underline hover:border-white/40 transition-colors">
+            <a href={`mailto:${SITE.email}`} onClick={() => trackEvent('email_click', { location: 'cta_section' })} className="inline-flex items-center text-[14.5px] font-medium text-white/70 px-7 py-3.5 rounded-lg border-[1.5px] border-white/15 no-underline hover:border-white/40 transition-colors">
               {SITE.email}
             </a>
           </div>

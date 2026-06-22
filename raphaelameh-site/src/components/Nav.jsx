@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { IconLinkedIn } from './Icons';
 import { SITE } from '@/lib/constants';
+import { trackEvent } from '@/lib/analytics';
 
 const links = [
   { label: 'Services', href: '/#services' },
@@ -52,6 +53,7 @@ export default function Nav() {
             href={SITE.linkedin}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('linkedin_click', { location: 'nav' })}
             className="text-muted hover:text-navy transition-colors"
           >
             <IconLinkedIn className="w-[17px] h-[17px]" />
@@ -59,6 +61,7 @@ export default function Nav() {
           <div className="w-px h-[18px] bg-border" />
           <Link
             href="/contact"
+            onClick={() => trackEvent('cta_click_book_call', { location: 'nav' })}
             className="text-[13.5px] font-semibold text-white bg-navy px-5 py-2 rounded-md no-underline hover:bg-navy-mid transition-colors"
           >
             Book a Call
@@ -100,7 +103,7 @@ export default function Nav() {
           ))}
           <Link
             href="/contact"
-            onClick={() => setOpen(false)}
+            onClick={() => { trackEvent('cta_click_book_call', { location: 'nav' }); setOpen(false); }}
             className="mt-2 text-sm font-semibold text-white bg-navy py-3 rounded-md no-underline text-center"
           >
             Book a Call

@@ -1,6 +1,8 @@
+'use client';
 import Link from 'next/link';
 import { IconLinkedIn } from './Icons';
 import { SITE } from '@/lib/constants';
+import { trackEvent } from '@/lib/analytics';
 
 const footerLinks = [
   { label: 'Services', href: '/#services' },
@@ -32,6 +34,7 @@ export default function Footer() {
             href={SITE.linkedin}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('linkedin_click', { location: 'footer' })}
             className="text-white/30 hover:text-white/60 transition-colors"
           >
             <IconLinkedIn className="w-4 h-4" />
