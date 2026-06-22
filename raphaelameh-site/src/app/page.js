@@ -6,6 +6,7 @@ import Reveal from '@/components/Reveal';
 import { IconArrowRight, IconArrowUp, SERVICE_ICONS } from '@/components/Icons';
 import { SITE, SERVICES, CASE_STUDIES, INSIGHTS } from '@/lib/constants';
 import { trackEvent } from '@/lib/analytics';
+import ScrollTracker from '@/components/ScrollTracker';
 
 /* ── Eyebrow ── */
 function Eyebrow({ children }) {
@@ -495,6 +496,7 @@ export default function HomePage() {
 
   return (
     <>
+      <ScrollTracker />
       <Hero />
       <PainPoints />
       <ServicesSection />

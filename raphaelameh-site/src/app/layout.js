@@ -1,8 +1,8 @@
-import Script from 'next/script';
 import '@/styles/globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
+import { GTMHead, GTMNoScript } from '@/components/GTM';
 import { SITE } from '@/lib/constants';
 
 export const metadata = {
@@ -79,24 +79,12 @@ export default function RootLayout({ children }) {
           }}
         />
 
-        {/* Google Analytics 4 */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-YRPHYS6N05"
-          strategy="afterInteractive"
-        />
-
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-YRPHYS6N05');
-          `}
-        </Script>
+        {/* Google Tag Manager + Consent Mode v2 */}
+        <GTMHead />
       </head>
 
       <body className="font-sans bg-cream">
+        <GTMNoScript />
         <Nav />
         <main>{children}</main>
         <Footer />

@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { grantConsent, denyConsent } from '@/lib/dataLayer';
 
 export default function CookieBanner() {
   const [show, setShow] = useState(false);
@@ -10,35 +11,20 @@ export default function CookieBanner() {
     if (!consent) {
       setShow(true);
     } else if (consent === 'accepted') {
-      loadGA4();
+      grantConsent();
     }
   }, []);
-
-  function loadGA4() {
-    // Replace G-XXXXXXXXXX with your actual GA4 Measurement ID
-    const GA_ID = 'G-YRPHYS6N05';
-    if (typeof window !== 'undefined' && !document.getElementById('ga4-script')) {
-      const script = document.createElement('script');
-      script.id = 'ga4-script';
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-      script.async = true;
-      document.head.appendChild(script);
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { window.dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', GA_ID);
-    }
-  }
 
   function accept() {
     localStorage.setItem('cookie-consent', 'accepted');
     setShow(false);
-    loadGA4();
+    grantConsent();
   }
 
   function decline() {
     localStorage.setItem('cookie-consent', 'declined');
     setShow(false);
+    denyConsent();
   }
 
   if (!show) return null;
