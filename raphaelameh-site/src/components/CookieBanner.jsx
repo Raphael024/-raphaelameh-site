@@ -16,7 +16,7 @@ export default function CookieBanner() {
 
   function loadGA4() {
     // Replace G-XXXXXXXXXX with your actual GA4 Measurement ID
-    const GA_ID = 'G-XXXXXXXXXX';
+    const GA_ID = 'G-YRPHYS6N05';
     if (typeof window !== 'undefined' && !document.getElementById('ga4-script')) {
       const script = document.createElement('script');
       script.id = 'ga4-script';
