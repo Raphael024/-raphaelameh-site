@@ -21,7 +21,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/og-image.png',
+        url: '/images/og-image.png?v=2',
         width: 1200,
         height: 630,
         alt: `${SITE.name} — Data & AI Consultant`,
@@ -32,7 +32,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: `Data & AI Consultant — ${SITE.name}`,
     description: SITE.description,
-    images: ['/images/og-image.png'],
+    images: ['/images/og-image.png?v=2'],
   },
   robots: { index: true, follow: true },
 };
