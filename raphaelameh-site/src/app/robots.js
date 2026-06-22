@@ -6,4 +6,4 @@ export default function robots() {
     },
     sitemap: 'https://raphaelameh.com/sitemap.xml',
   };
-}
+}   
